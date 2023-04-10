@@ -20,73 +20,85 @@ const Comic: NextPage<Props> = ({ comic }) => {
 
   return (
     <>
-      <Head>
-        <title>DH-MARVEL</title>
-        <meta
-          name="description"
-          content={`Comic de Marvel.${comic.title}.${comic.series}`}
-        />
-      </Head>
-      {router.isFallback ? (
-        <Loader />
-      ) : (
-        <Stack
-          component="section"
-          maxWidth="xl"
-          direction="column"
-          justifyContent="flex-start"
-          alignItems="center"
-          sx={{
-            padding: "100px 20px",
-          }}
-        >
-          <Grid container spacing={4} maxWidth="xl">
-            <Grid item xs={12} sm={12} md={6}>
-              <Box
-                sx={{
-                  position: "relative",
-                  width: "100%",
-                  justifyContent: "center",
-                }}
-              >
-                <Box
-                  component="img"
-                  alt={comic.title}
-                  src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                  sx={{
-                    boxShadow: "0.2px 0.2px 10px rgba(0,0,0,0.2)",
-                    margin: "auto",
-                    maxWidth: "100%",
-                    maxHeight: "100%",
-                  }}
-                />
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={12} md={6}>
-              <CardComicDetails comic={comic} />
-              <Box
-                sx={{
-                  paddingBottom: "90px",
-                }}
-              >
-                {comic.stock > 0 ? (
-                  <NextLink
-                    href={{ pathname: "/checkout/", query: `comic=${comic.id}` }}
+      {comic ? (
+        <>
+          <Head>
+            <title>DH-MARVEL</title>
+            <meta
+              name="description"
+              content={`Comic de Marvel.${comic.title}.${comic.series}`}
+            />
+          </Head>
+          {router.isFallback ? (
+            <Loader />
+          ) : (
+            <Stack
+              component="section"
+              maxWidth="xl"
+              direction="column"
+              justifyContent="flex-start"
+              alignItems="center"
+              sx={{
+                padding: "100px 20px",
+              }}
+            >
+              <Grid container spacing={4} maxWidth="xl">
+                <Grid item xs={12} sm={12} md={6}>
+                  <Box
+                    sx={{
+                      position: "relative",
+                      width: "100%",
+                      justifyContent: "center",
+                    }}
                   >
-                    <Button endIcon={<AddShoppingCartOutlinedIcon />}>
-                      COMPRAR
-                    </Button>
-                  </NextLink>
-                ) : (
-                  <Button disabled endIcon={<AddShoppingCartOutlinedIcon />}>
-                    SIN STOCK
-                  </Button>
-                )}
-              </Box>
-              <AccordionComic comic={comic} />
-            </Grid>
-          </Grid>
-        </Stack>
+                    <Box
+                      component="img"
+                      alt={comic.title}
+                      src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                      sx={{
+                        boxShadow: "0.2px 0.2px 10px rgba(0,0,0,0.2)",
+                        margin: "auto",
+                        maxWidth: "100%",
+                        maxHeight: "100%",
+                      }}
+                    />
+                  </Box>
+                </Grid>
+                <Grid item xs={12} sm={12} md={6}>
+                  <CardComicDetails comic={comic} />
+                  <Box
+                    sx={{
+                      paddingBottom: "90px",
+                    }}
+                  >
+                    {comic.stock > 0 ? (
+                      <NextLink
+                        href={{
+                          pathname: "/checkout/",
+                          query: `comic=${comic.id}`,
+                        }}
+                      >
+                        <Button endIcon={<AddShoppingCartOutlinedIcon />}>
+                          COMPRAR
+                        </Button>
+                      </NextLink>
+                    ) : (
+                      <Button
+                        disabled
+                        endIcon={<AddShoppingCartOutlinedIcon />}
+                      >
+                        SIN STOCK
+                      </Button>
+                    )}
+                  </Box>
+                  <AccordionComic comic={comic} />
+                </Grid>
+              </Grid>
+            </Stack>
+          )}
+        </>
+      ) : (
+        <> </>
       )}
     </>
   );
@@ -106,7 +118,9 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await getComics();
-  const paths = data.results.map((comic:any) => ({ params: { id: comic.id.toString() } }));
+  const paths = data.results.map((comic: any) => ({
+    params: { id: comic.id.toString() },
+  }));
 
   return {
     paths,
@@ -115,4 +129,3 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export default Comic;
-
