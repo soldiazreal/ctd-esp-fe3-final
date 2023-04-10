@@ -3,6 +3,7 @@ import { checkoutMocked } from "dh-marvel/test/mocks/checkout";
 import { ICheckout } from "types/ICheckout.type";
 import CardSuccessCheckout from "./card-succes-checkout.component";
 
+
 describe("CardSuccessCheckout component", () => {
   describe("when rendering default component", () => {
     it("should render the card message", () => {
