@@ -27,7 +27,7 @@ const SuccesCheckout: NextPage = () => {
   }
 
   return (
-    <Stack paddingTop={20} direction="column" alignItems="center">
+    <Stack paddingTop={1} direction="column" alignItems="center">
       <CardSuccessCheckout data={dataCheckout} />
       <NextLink href="/">
         <Button variant="outlined" sx={{ margin: 5 }}>

@@ -39,7 +39,7 @@ const Comic: NextPage<Props> = ({ comic }) => {
               justifyContent="flex-start"
               alignItems="center"
               sx={{
-                padding: "100px 20px",
+                padding: "10px 20px",
               }}
             >
               <Grid container spacing={4} maxWidth="xl">
@@ -68,7 +68,7 @@ const Comic: NextPage<Props> = ({ comic }) => {
                   <CardComicDetails comic={comic} />
                   <Box
                     sx={{
-                      paddingBottom: "90px",
+                      paddingBottom: "10px",
                     }}
                   >
                     {comic.stock > 0 ? (
