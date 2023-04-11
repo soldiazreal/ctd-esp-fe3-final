@@ -11,7 +11,7 @@ const CardComicDetails: NextPage<Props> = ({ comic }) => {
   const offert = percentageOff(comic?.oldPrice, comic?.price);
 
   return (
-    <Box sx={{ paddingBottom: "3px" }}>
+    <Box sx={{ paddingBottom: "30px" }}>
       <Typography gutterBottom variant="subtitle1">
         Serie: {comic.series.name}
       </Typography>

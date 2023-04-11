@@ -28,13 +28,17 @@ describe("CardSuccessCheckout component", () => {
     });
     it("should render the address", () => {
       render(<CardSuccessCheckout data={checkoutMocked as ICheckout} />);
-      const address = screen.getByText(/Dirección: calle falsa/i);
-      expect(address).toBeInTheDocument();
+      const city = screen.getByText(/Dirección: calle falsa/i);
+      expect(city).toBeInTheDocument();
     });
-    it("should render the address", () => {
+    it("should render the city", () => {
       render(<CardSuccessCheckout data={checkoutMocked as ICheckout} />);
-      const address = screen.getByText(/Dirección alternativa: calle verdadera/i);
-      expect(address).toBeInTheDocument();
+      const city = screen.getByText(/Ciudad: bs as/i);
+      expect(city).toBeInTheDocument();
+    });it("should render the zipcode", () => {
+      render(<CardSuccessCheckout data={checkoutMocked as ICheckout} />);
+      const zipCode = screen.getByText(/CP: 123/i);
+      expect(zipCode).toBeInTheDocument();
     });
   });
 });
