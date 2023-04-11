@@ -79,7 +79,7 @@ const CardSuccessCheckout: FC<CardSuccessCheckoutProps> = ({ data }) => {
             {data?.customer.lastname}
           </Typography>
           <Typography paddingBottom={1}>
-            Dirección: {data?.customer.address.address1}
+            Dirección: {data?.customer.address.address}
           </Typography>
           {data?.customer.address.city && (
             <Typography paddingBottom={1}>

@@ -4,8 +4,7 @@ export const checkoutMocked = {
     lastname: "dr",
     email: "sol@gmail.com",
     address: {
-      address1: "calle falsa",
-      address2: "calle verdadera",
+      address: "calle falsa",
       city: "bs as",
       state: "bs as",
       zipCode: "123",

@@ -32,15 +32,14 @@ const DeliveryForm: FC<DeliveryFormProps> = ({
   };
 
   useEffect(() => {
-    setFocus("address1");
+    setFocus("address");
   }, [setFocus]);
 
   return (
     <Stack>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormProvider {...methods}>
-          <ControlledTextInput name="address1" label="Dirección" />
-          <ControlledTextInput name="address2" label="Dirección alternativa" />
+          <ControlledTextInput name="address" label="Dirección" />
           <ControlledTextInput name="city" label="Ciudad" />
           <ControlledTextInput name="state" label="Provincia" />
           <ControlledTextInput name="zipCode" label="Código postal" />

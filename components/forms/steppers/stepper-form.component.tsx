@@ -30,8 +30,7 @@ const StepperForm: FC<StepperFormProps> = ({ comic }) => {
       lastname: "",
       email: "",
       address: {
-        address1: "",
-        address2: null,
+        address: "",
         city: "",
         state: "",
         zipCode: "",

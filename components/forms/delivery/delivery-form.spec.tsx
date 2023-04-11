@@ -4,8 +4,7 @@ import userEvent from "@testing-library/user-event";
 import DeliveryForm from "./delivery-form.component";
 
 const defaultData = {
-  address1: "",
-  address2: null,
+  address: "",
   city: "",
   state: "",
   zipCode: "",
@@ -23,11 +22,8 @@ describe("Delivery component", () => {
         />
       );
 
-      const textboxAddress1 = screen.getByRole("textbox", {
+      const textboxAddress = screen.getByRole("textbox", {
         name: "Dirección",
-      });
-      const textboxAddress2 = screen.getByRole("textbox", {
-        name: "Dirección alternativa",
       });
       const textboxcity = screen.getByRole("textbox", { name: "Ciudad" });
       const textboxState = screen.getByRole("textbox", { name: "Provincia" });
@@ -35,15 +31,14 @@ describe("Delivery component", () => {
         name: "Código postal",
       });
 
-      expect(textboxAddress1).toBeInTheDocument();
-      expect(textboxAddress2).toBeInTheDocument();
+      expect(textboxAddress).toBeInTheDocument();
       expect(textboxcity).toBeInTheDocument();
       expect(textboxState).toBeInTheDocument();
       expect(textboxZipCode).toBeInTheDocument();
     });
   });
 
-  it("should have the input address1 by default", () => {
+  it("should have the input address by default", () => {
     renderWithReactHookForm(
       <DeliveryForm
         data={defaultData}
@@ -68,11 +63,8 @@ describe("Delivery component", () => {
         />
       );
 
-      const textboxAddress1 = screen.getByRole<HTMLInputElement>("textbox", {
+      const textboxAddress = screen.getByRole<HTMLInputElement>("textbox", {
         name: "Dirección",
-      });
-      const textboxAddress2 = screen.getByRole<HTMLInputElement>("textbox", {
-        name: "Dirección alternativa",
       });
       const textboxcity = screen.getByRole<HTMLInputElement>("textbox", {
         name: "Ciudad",
@@ -84,14 +76,12 @@ describe("Delivery component", () => {
         name: "Código postal",
       });
 
-      await userEvent.type(textboxAddress1, "calle falsa");
-      await userEvent.type(textboxAddress2, "calle verdadera");
+      await userEvent.type(textboxAddress, "calle falsa");
       await userEvent.type(textboxcity, "bs as");
       await userEvent.type(textboxState, "bs as");
       await userEvent.type(textboxZipCode, "3421");
 
-      expect(textboxAddress1.value).toBe("calle falsa");
-      expect(textboxAddress2.value).toBe("calle verdadera");
+      expect(textboxAddress.value).toBe("calle falsa");
       expect(textboxcity.value).toBe("bs as");
       expect(textboxState.value).toBe("bs as");
       expect(textboxZipCode.value).toBe("3421");
