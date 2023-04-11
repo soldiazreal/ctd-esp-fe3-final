@@ -50,7 +50,7 @@ describe("Checkout", () => {
       const { req, res } = createMocks({
         method: "POST",
         body: {
-          customer: { address: { address2: invalidAddress } },
+          customer: { address: { address: invalidAddress } },
         } as ICheckout,
       });
       await handleCheckout(req, res);
