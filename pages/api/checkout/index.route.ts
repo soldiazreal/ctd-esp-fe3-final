@@ -33,7 +33,7 @@ export default function handler(
   }
   try {
     const body: ICheckout = req.body;
-    if (body.customer.address.address2 === invalidAddress) {
+    if (body.customer.address.address === invalidAddress) {
       res.status(400).json(ERROR_INCORRECT_ADDRESS);
       return;
     }
