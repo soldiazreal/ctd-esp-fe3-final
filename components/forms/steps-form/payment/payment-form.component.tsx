@@ -6,7 +6,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import paymentSchema from "./schema";
 import { Box, Stack } from "@mui/material";
-import StepperNavigation from "../steppers/stepper-navigation.component";
+import StepperNavigation from "../../steppers/stepper-navigation.component";
 import { ICard } from "types/ICheckout.type";
 
 type PaymentFormProps = {

@@ -7,10 +7,10 @@ import {
   StepButton,
   Alert,
 } from "@mui/material";
-import DeliveryForm from "../delivery/delivery-form.component";
-import PaymentForm from "../payment/payment-form.component";
+import DeliveryForm from "../steps-form/delivery/delivery-form.component";
+import PaymentForm from "../steps-form/payment/payment-form.component";
 import { IAddress, ICard, ICheckout, ICustomer } from "types/ICheckout.type";
-import CustomerDataForm from "../customer/customer-data-form.component";
+import CustomerDataForm from "../steps-form/customer/customer-data-form.component";
 import { postCheckout } from "dh-marvel/services/checkout/checkout.service";
 import { IComic } from "types/IComic.type";
 import catchError from "../handle-checkout-errors";

@@ -4,7 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ControlledTextInput from "dh-marvel/components/text-input/text-input.component";
 import deliverySchema from "./schema";
-import StepperNavigation from "../steppers/stepper-navigation.component";
+import StepperNavigation from "../../steppers/stepper-navigation.component";
 import { IAddress } from "types/ICheckout.type";
 
 export type DeliveryFormProps = {
