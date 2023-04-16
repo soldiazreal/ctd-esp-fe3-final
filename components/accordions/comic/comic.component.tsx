@@ -26,7 +26,7 @@ const AccordionComic: FC<Props> = ({ comic: { description, characters, creators 
             characters.items.map((character) => {
               return (
                 <NextLink
-                  href={`/characters/${getIdfromURI(character.resourceURI)}`}
+                  href={`/personajes/${getIdfromURI(character.resourceURI)}`}
                   key={`character-${character.name}`}
                 >
                   <Button fullWidth size="small">
