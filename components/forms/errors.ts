@@ -1,6 +1,6 @@
 const ERROR_MESSAGES_CHECKOUT = {
   CARD_DATA_INCORRECT: {
-    message: "Datos de tarjeta incorrecta",
+    message: "Datos de tarjeta incorrectos",
   },
   CARD_WITHOUT_AUTHORIZATION: {
     message:

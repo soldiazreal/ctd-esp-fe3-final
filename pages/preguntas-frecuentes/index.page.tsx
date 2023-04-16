@@ -10,9 +10,19 @@ import BodySingle from "dh-marvel/components/layouts/body/single/body-single";
 import { Box } from "@mui/material";
 import { faqsData } from "../../constants/faqs/faqsData";
 
-const Faqs: NextPage = () => {
+type Faq = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
+type FaqsProps = {
+  faqs: Faq[];
+};
+
+const Faqs: NextPage<FaqsProps> = ({ faqs }) => {
   const renderFaqs = () => {
-    return faqsData.map((faq) => (
+    return faqs.map((faq) => (
       <Accordion key={faq.id}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -47,4 +57,15 @@ const Faqs: NextPage = () => {
   );
 };
 
+export const getStaticProps = async () => {
+  const faqs = faqsData;
+
+  return {
+    props: {
+      faqs,
+    },
+  };
+};
+
 export default Faqs;
+

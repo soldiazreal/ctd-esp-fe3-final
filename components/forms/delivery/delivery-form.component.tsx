@@ -40,6 +40,7 @@ const DeliveryForm: FC<DeliveryFormProps> = ({
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormProvider {...methods}>
           <ControlledTextInput name="address" label="Dirección" />
+          <ControlledTextInput name="department" label="Piso/Departamento (opcional)"/>
           <ControlledTextInput name="city" label="Ciudad" />
           <ControlledTextInput name="state" label="Provincia" />
           <ControlledTextInput name="zipCode" label="Código postal" />

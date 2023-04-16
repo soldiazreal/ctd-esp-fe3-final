@@ -10,23 +10,25 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { IComic } from "types/IComic.type";
 
-interface CheckoutProps {}
-
-const Checkout: NextPage<CheckoutProps> = () => {
+const Checkout: NextPage = () => {
   const router = useRouter();
   const { comic } = router.query;
-  const [comicData, setComicData] = useState<IComic | undefined>();
+  const [comicData, setComicData] = useState<IComic>();
 
   useEffect(() => {
-    async function fetchComicData() {
-      const id = parseInt(comic as string);
-
-      if (comic) {
-        const data = await getComicsById(id);
-        setComicData(data);
-      }
+    if (!comic) {
+      router.push('/');
     }
-    fetchComicData();
+  }, []); 
+  
+  useEffect(() => {
+    const id = parseInt(comic as string);
+
+    if (comic) {
+      getComicsById(id).then((data) => {
+        setComicData(data);
+      });
+    }
   }, [comic]);
 
   if (!comic) {
@@ -34,34 +36,32 @@ const Checkout: NextPage<CheckoutProps> = () => {
   }
 
   return (
-    <>
-      <Head>
-        <title>Checkout | DH Marvel Comics</title>
-      </Head>
-      <LayoutCheckout>
-        <Box sx={{ padding: { xs: "80px 20px", sm: "100px 20px" } }}>
-          <Stack
-            direction={{ sm: "column", md: "row-reverse" }}
-            spacing={{ xs: 15, sm: 15, md: 8, xl: 20 }}
-            alignItems={{ xs: "center", sm: "center", md: "self-start" }}
-          >
-            <Box
-              sx={{
-                backgroundColor: "#f3f3f3",
-                height: "100%",
-                padding: "30px",
-              }}
-            >
-              <CardCheckoutProduct comic={comicData} />
-            </Box>
-            <Box>
-              <StepperForm comic={comicData} />
-            </Box>
-          </Stack>
+    <Box
+      sx={{
+        padding: { xs: "80px 20px", sm: "100px 20px" },
+      }}
+    >
+      <Stack
+        direction={{ sm: "column", md: "row-reverse" }}
+        spacing={{ xs: 15, sm: 15, md: 8, xl: 20 }}
+        alignItems={{ xs: "center", sm: "center", md: "self-start" }}
+      >
+        <Box
+          sx={{
+            backgroundColor: "#f3f3f3",
+            height: "100%",
+            padding: "30px",
+          }}
+        >
+          <CardCheckoutProduct comic={comicData} />
         </Box>
-      </LayoutCheckout>
-    </>
+        <Box>
+          <StepperForm comic={comicData} />
+        </Box>
+      </Stack>
+    </Box>
   );
 };
+(Checkout as any).Layout = LayoutCheckout;
 
 export default Checkout;

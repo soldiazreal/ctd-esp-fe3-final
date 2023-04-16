@@ -15,6 +15,7 @@ import { postCheckout } from "dh-marvel/services/checkout/checkout.service";
 import { IComic } from "types/IComic.type";
 import catchError from "./handle-checkout-errors";
 import { useRouter } from "next/router";
+import {Snackbar }from "@mui/material";
 
 const steps = ["Datos Personales", "Dirección de entrega", "Datos del pago"];
 
@@ -31,6 +32,7 @@ const StepperForm: FC<StepperFormProps> = ({ comic }) => {
       email: "",
       address: {
         address: "",
+        department: "",
         city: "",
         state: "",
         zipCode: "",
@@ -167,15 +169,15 @@ const StepperForm: FC<StepperFormProps> = ({ comic }) => {
           />
         )}
       </Box>
-      {error !== "" && (
-        <Alert
-          severity="error"
-          sx={{
-            marginTop: "30px",
-          }}
+      {error && (
+        <Snackbar
+          open={!!error}
+          autoHideDuration={4000}
+          onClose={() => setError('')}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-          {error}
-        </Alert>
+          <Alert severity='error'>{error}</Alert>
+        </Snackbar>
       )}
     </Box>
   );

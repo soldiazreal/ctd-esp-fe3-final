@@ -9,6 +9,7 @@ const defaultData = {
   email: "",
   address: {
     address: "",
+    department: "",
     city: "",
     state: "",
     zipCode: "",
