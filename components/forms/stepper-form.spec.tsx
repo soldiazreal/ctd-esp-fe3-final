@@ -1,6 +1,6 @@
 import { screen, render} from "@testing-library/react";
 import { renderWithReactHookForm } from "dh-marvel/test/form-helper";
-import StepperForm from "../stepper-form.component";
+import StepperForm from "./stepper-form.component";
 import { comicMock } from "dh-marvel/test/mocks/comic";
 
 
